@@ -8,6 +8,8 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 // Load the router responsible for CustomersAPI.php
 require_once __DIR__ . "/CustomersAPI.php";
 
+
+
 // Class for routing all our API requests
 
 class APIRouter{
