@@ -5,8 +5,9 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
     die('This file cannot be accessed directly.');
 }
 
-// Load the router responsible for CustomersAPI.php
-require_once __DIR__ . "/CustomersAPI.php";
+// Load the router responsible for UsersAPI.php and AppsAPI.php 
+require_once __DIR__ . "/AppsAPI.php";
+require_once __DIR__ . "/UsersAPI.php";
 
 
 
@@ -22,9 +23,10 @@ class APIRouter{
         // Available routes
         // Add to this if you need to add any route to the API
         $this->routes = [
-            // Whenever someone calls "api/Customers" we 
-            // will load the CustomersAPI class
-            "customers" => "CustomersAPI"
+            // Whenever someone calls "api/Apps" and "api/Users" we 
+            // will load the AppsAPI and UsersAPI class
+            "apps" => "APPsAPI"
+            "users" => "UsersAPI"
         ];
 
         $this->path_parts = $path_parts;
@@ -33,8 +35,8 @@ class APIRouter{
 
     public function handleRequest(){
 
-        // Get the requested resource from the URL such as "Customers" or "Products"
-        $resource = strtolower($this->path_parts[1]); //gets the 2nd one which is customers. It starts on 0 on array.
+        // Get the requested resource from the URL such as "Apps/Users" or "Products"
+        $resource = strtolower($this->path_parts[1]); //gets the 2nd one which is apps/users. It starts on 0 on array.
 
         // Cet the class specified in the routes
         $route_class = $this->routes[$resource];
