@@ -12,7 +12,7 @@ class Database
 {
     private $host = "localhost";
     private $user = "root";
-    private $pass = "";
+    private $pass = "root";
     private $db = "multitier_shop";
 
     protected $conn;

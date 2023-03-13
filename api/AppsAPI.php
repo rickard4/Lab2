@@ -1,5 +1,3 @@
-
-
 <?php
 
 // Check for a defined constant or specific file inclusion
@@ -87,12 +85,13 @@ class AppsAPI extends RestAPI
     // inserting it in the database.
     private function postOne()
     {
-        $app = new CustomerModel();
+        $app = new AppModel();
 
-        $customer->customer_name = $this->body["customer_name"];
-        $customer->birth_year = $this->body["birth_year"];
+        $app->app_name = $this->body["app_name"];
+        $app->description = $this->body["description"];
+        $app->price = $this->body["price"];
 
-        $success = CustomersService::saveCustomer($customer);
+        $success = AppsService::saveApp($app);
 
         if($success){
             $this->created();
@@ -102,16 +101,17 @@ class AppsAPI extends RestAPI
         }
     }
 
-    // Gets the contents of the body and updates the customer
+    // Gets the contents of the body and updates the app
     // by sending it to the DB
     private function putOne($id)
     {
-        $customer = new CustomerModel();
+        $app = new AppModel();
 
-        $customer->customer_name = $this->body["customer_name"];
-        $customer->birth_year = $this->body["birth_year"];
+        $app->app_name = $this->body["app_name"];
+        $app->description = $this->body["description"];
+        $app->price = $this->body["price"];
 
-        $success = CustomersService::updateCustomerById($id, $customer);
+        $success = AppsService::updateAppById($id, $app);
 
         if($success){
             $this->ok();
@@ -121,16 +121,16 @@ class AppsAPI extends RestAPI
         }
     }
 
-    // Deletes the customer with the specified ID in the DB
+    // Deletes the app with the specified ID in the DB
     private function deleteOne($id)
     {
-        $customer = CustomersService::getCustomerById($id);
+        $app = AppsService::getAppById($id);
 
-        if($customer == null){
+        if($app == null){
             $this->notFound();
         }
 
-        $success = CustomersService::deleteCustomerById($id);
+        $success = AppsService::deleteAppById($id);
 
         if($success){
             $this->noContent();
