@@ -23,8 +23,11 @@ class RestAPI
         
         // Set the other protected properties
         $this->path_parts = $this->removeEmptyStrings($path_parts);
+        // is an array ["api", "users/apps", "3(the id)"] we can from this check how long this request was to determine 
+        // what to do with it on the users/appsAPI. 
         $this->query_params = $query_params;
-        $this->method = $_SERVER["REQUEST_METHOD"];
+        $this->method = $_SERVER["REQUEST_METHOD"]; // Get, post, put, delete  what method and use in users/appsAPI
+        
 
         // Count the number of "parts" in the path
         // Example: "api/Customers" is 2 parts and
@@ -34,6 +37,7 @@ class RestAPI
         $this->parseBody();
     }
 
+    // Just for the response that will be sent back
     // Sends the content of $response as JSON and ends execution
     // $status is the status code to send (200 is default and means "OK") 
     protected function sendJson($response, $status = 200)
@@ -76,6 +80,7 @@ class RestAPI
         
     }
 
+    // For deleting things in postman if you by accident inlude a space this funciton takes away.
     private function removeEmptyStrings($arr) {
         return array_filter($arr, function($str) {
             return trim($str) !== '';
