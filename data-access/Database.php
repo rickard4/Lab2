@@ -4,7 +4,7 @@
 if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     die('This file cannot be accessed directly.');
 }
-
+$sql = "SELECT * FROM apps"; 
 // Data access:
 // Class for connecting to database
 

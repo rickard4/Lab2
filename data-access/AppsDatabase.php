@@ -5,6 +5,7 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
     die('This file cannot be accessed directly.');
 }
 
+$sql = "SELECT * FROM apps"; 
 // Use "require_once" to load the files needed for the class
 
 require_once __DIR__ . "/Database.php";
