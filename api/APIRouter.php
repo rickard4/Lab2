@@ -25,7 +25,7 @@ class APIRouter{
         $this->routes = [
             // Whenever someone calls "api/Apps" and "api/Users" we 
             // will load the AppsAPI and UsersAPI class
-            "apps" => "APPsAPI"
+            "apps" => "AppsAPI"
             "users" => "UsersAPI"
         ];
 
